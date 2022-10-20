@@ -10,7 +10,7 @@ export default function Rote(){
             <Routes>
                 <Route exact path="/" element={<Fetching/>}/>
                 <Route exact path="/user" element={<App/>}/>
-                <Route exact path="/user:id" element={<Useredit/>}/>
+                <Route exact path="/user/:id/:userId/:title/:body" element={<Useredit/>}/>
             </Routes>
         </Router>
 

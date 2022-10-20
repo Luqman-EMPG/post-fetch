@@ -51,12 +51,11 @@ export default function App() {
                         <p>
                             <b>BODY TEXT:</b> {data.body}
                         </p>
-                        <Link to={"/user/"+data.id}>
+                        <Link to={`/user/${data.id}/${data.userId}/${data.title}/${data.body}`}>
                             <button>
                                 EDIT
                             </button>
                         </Link>
-
                         {/*onClick={()=>navigate("/user"+id,{state:{id:userId,name:title,body:body}})}*/}
                     </li>
                 ))}
