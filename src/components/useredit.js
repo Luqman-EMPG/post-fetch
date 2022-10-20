@@ -1,12 +1,20 @@
-import {useLocation} from 'react-router-dom';
-export default function Useredit(){
-    const location = useLocation();
-    return(
+// import {useLocation} from 'react-router-dom';
+import {useParams} from "react-router-dom";
 
-        <div className="useredit">
-            <p><b>TITLE: </b>{location.state.name}</p>
-            <p><b>BODY: </b>{location.state.body}</p>
+export default function Useredit(){
+
+    const {id}=useParams();
+    // const search= useLocation().search;
+    // const name=new URLSearchParams(search).get('name')
+    return(
+        <div>
+            <p><b>TITLE:</b>{id}</p>
         </div>
+
+        // <div className="useredit">
+        //     <h3>Items page</h3>
+        //     <p>{name}</p>
+        // </div>
     )
 
 }

@@ -1,13 +1,13 @@
 import React, { useState, useEffect,  } from "react";
 import "./style.css";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import {Link} from "react-router-dom";
 
 
 export default function App() {
     const [data, setData] = useState([]);
     const [value, setValue] = useState(0);
-   const navigate = useNavigate();
+   // const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -40,22 +40,24 @@ export default function App() {
 
             <ol>
 
-                {data.slice(0, value + 10).map(({ id,userId, title, body }) => (
-                    <li key={id}>
+                {data.slice(0, value + 10).map((data) => (
+                    <li key={data.id}>
                         <p>
-                            <b>USER ID:</b> {userId}
+                            <b>USER ID:</b> {data.userId}
                         </p>
                         <p>
-                            <b>TITLE:</b> {title}
+                            <b>TITLE:</b> {data.title}
                         </p>
                         <p>
-                            <b>BODY TEXT:</b> {body}
+                            <b>BODY TEXT:</b> {data.body}
                         </p>
-                        <Link to={"/user/"+id}>
-                            <button onClick={() => navigate("/user/:id",{state:{id:userId,name:title,body:body}})}>
+                        <Link to={"/user/"+data.id}>
+                            <button>
                                 EDIT
                             </button>
                         </Link>
+
+                        {/*onClick={()=>navigate("/user"+id,{state:{id:userId,name:title,body:body}})}*/}
                     </li>
                 ))}
             </ol>

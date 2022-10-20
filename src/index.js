@@ -4,7 +4,6 @@ import ReactDOM from "react-dom";
 import Rote from "./components/app";
 
 
-
 const root=ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <StrictMode>
