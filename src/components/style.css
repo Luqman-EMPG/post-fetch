@@ -1,0 +1,36 @@
+body {
+    color: #333;
+}
+
+h1 {
+    margin-bottom: 1rem;
+}
+.size{
+    font-size: xx-large;
+}
+
+li {
+    border: 1px solid #747272;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+h3 {
+    font-size: 1rem;
+    line-height: 1.4;
+}
+.useredit{
+    border: 1px solid #747272;
+    padding: 10px;
+    border-radius: 3px;
+}
+/*.styling1{*/
+/*    border: 1px solid #747272;*/
+/*    padding: 5px;*/
+/*    border-radius: 1px;*/
+/*}*/
+/*.styling2{*/
+/*    border: 1px solid #747272;*/
+/*    padding: 10px;*/
+/*    border-radius: 3px;*/
+/*}*/

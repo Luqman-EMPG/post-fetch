@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,  } from "react";
 import "./style.css";
-import Useredit from './components/useredit';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 
 export default function App() {
     const [data, setData] = useState([]);
     const [value, setValue] = useState(0);
+   const navigate = useNavigate();
+
+
     useEffect(() => {
         const getData = async () => {
             try {
@@ -28,22 +31,17 @@ export default function App() {
     }, []);
 
 
+    //let state;
     return (
 
-    <div className="App">
-        <Router>
-            <Routes>
-                <Route exact path="/test" component={Useredit} />
-            </Routes>
-        </Router>
+        <div className="App">
 
-        <h1>API Posts</h1>
+            <h1>API Posts</h1>
 
             <ol>
 
-                {data.slice(0, value + 10).map(({ userId, title, body }) => (
-                    <li>
-
+                {data.slice(0, value + 10).map(({ id,userId, title, body }) => (
+                    <li key={id}>
                         <p>
                             <b>USER ID:</b> {userId}
                         </p>
@@ -53,9 +51,12 @@ export default function App() {
                         <p>
                             <b>BODY TEXT:</b> {body}
                         </p>
-                        <button onClick="User">edit</button>
+                        <Link to={"/user/"+id}>
+                            <button onClick={() => navigate("/user/:id",{state:{id:userId,name:title,body:body}})}>
+                                EDIT
+                            </button>
+                        </Link>
                     </li>
-
                 ))}
             </ol>
             <button
@@ -85,21 +86,3 @@ export default function App() {
         </div>
     );
 }
-/*function updateUser()
-{
-    let item={title,body}
-    console.warn("item",item)
-    fetch(`http://localhost:4000/todo/${userId}`, {
-        method: 'PUT',
-        headers:{
-            'Accept':'application/json',
-            'Content-Type':'application/json'
-        },
-        body:JSON.stringify(item)
-    }).then((result) => {
-        result.json().then((resp) => {
-            console.warn(resp)
-            getUsers()
-        })
-    })
-}*/
