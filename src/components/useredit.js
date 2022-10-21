@@ -26,29 +26,30 @@ export default function Useredit(){
             .then((json) => console.log(json));
     }
     return(
-        <div className="useredit">
-            <p>
+        <div>
+            <p className="useredit">
                 <b>USER ID:</b> {userId}
-            </p>
-            <p>
+                <br/>
                 <b>TITLE:</b> {title}
-            </p>
-            <p>
+                <br/>
                 <b>BODY TEXT:</b> {body}
+                <br/>
             </p>
+
+            <h2>UPDATE THE DATA</h2>
 
             <label>TITLE</label>
             <input onChange={(e)=> setTitle(e.target.value)}/>
+            <br/>
+            <br/>
             <label>BODY</label>
             <input onChange={(e)=> setBody(e.target.value)} />
+            <br/>
+            <br/>
             <button onClick={Handlechange}>UPDATE</button>
 
         </div>
 
-        // <div className="useredit">
-        //     <h3>Items page</h3>
-        //     <p>{name}</p>
-        // </div>
     )
 
 }
