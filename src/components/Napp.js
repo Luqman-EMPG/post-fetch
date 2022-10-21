@@ -1,6 +1,5 @@
 import React, { useState, useEffect,  } from "react";
 import "./style.css";
-//import { useNavigate } from "react-router-dom";
 import {Link} from "react-router-dom";
 
 
@@ -16,11 +15,6 @@ export default function App() {
                 const response = await fetch(
                     `https://jsonplaceholder.typicode.com/posts`
                 );
-                if (!response.ok) {
-                    throw new Error(
-                        `This is an HTTP error: The status is ${response.status}`
-                    );
-                }
                 let actualData = await response.json();
                 setData(actualData);
             } catch (err) {
@@ -51,7 +45,7 @@ export default function App() {
                         <p>
                             <b>BODY TEXT:</b> {data.body}
                         </p>
-                        <Link to={`/user/${data.id}/${data.userId}/${data.title}/${data.body}`}>
+                        <Link to={`/user/${data.id}`}>
                             <button>
                                 EDIT
                             </button>
