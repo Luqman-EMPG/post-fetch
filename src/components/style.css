@@ -8,12 +8,19 @@ h1 {
 .size{
     font-size: xx-large;
 }
-
-li {
+.data{
     border: 1px solid #747272;
     padding: 10px;
     border-radius: 3px;
 }
+
+.newdata {
+    border: 1px solid #747272;
+    padding: 10px;
+    border-radius: 3px;
+    line-height: 1.8;
+}
+
 
 h3 {
     font-size: 1rem;

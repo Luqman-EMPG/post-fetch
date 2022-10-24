@@ -1,83 +1,72 @@
-import {useEffect, useState} from 'react';
-import {Link, useParams} from "react-router-dom";
-import React from "react";
+import { useParams} from "react-router-dom";
+import React, {useEffect, useState} from "react";
 
-export default function Useredit(){
+export default function Useredit({match}) {
+    const {id}=useParams()
+    const[newdata,setnewData]=useState([])
+    useEffect(()=>{
+        fetchData();
+    });
 
-    //const {id}=useParams();
+    const fetchData = async () => {
+        try {
+            const newresponse = await fetch(
+                (`https://jsonplaceholder.typicode.com/posts/?id=${id}`)
+            );
+            let actualnewData = await newresponse.json();
+            setnewData(actualnewData);
+        } catch (err) {
+            setnewData(null);
+        }
+    };
+     return (
 
-    // const[Title,setTitle]=useState(title);
-    // const[Body,setBody]=useState(body);
-     const [data, setData] = useState([]);
-    // useEffect(({id}) => {
-    //     const getData = async () => {
-    //             const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
-    //                 .then((response) => response.json())
-    //                 .then((json) => console.log(json));
-    //     };
-    //     getData();
-    // }, []);
-    useEffect((id) => {
-        const getData = async () => {
-            try {
-                const response = await fetch(
-                    `https://jsonplaceholder.typicode.com/posts${id}`
-                );
-                let actualData = await response.json();
-                setData(actualData);
-            } catch (err) {
-                setData(null);
-            }
-        };
-        getData();
-    },[]);
-    return(
-        <div className="App">
-            {data.map(({id}) => (
-                <li key={data.id}>
-                    <p>
-                        <b>USER ID:</b> {data.userId}
-                    </p>
-                    <p>
-                        <b>TITLE:</b> {data.title}
-                    </p>
-                    <p>
-                        <b>BODY TEXT:</b> {data.body}
-                    </p>
-                    <Link to={`/user/${data.id}`}>
-                        <button>
-                            EDIT
-                        </button>
-                    </Link>
-                    {/*onClick={()=>navigate("/user"+id,{state:{id:userId,name:title,body:body}})}*/}
-                </li>
-            ))}
+        <div>
+            <ol>
+                {newdata.map((data) => (
+                    <li key={data.id} className="newdata">
+                        <p>
+                            <b>USER ID:</b> {data.userId}
+                        </p>
+                        <p>
+                            <b>TITLE:</b> {data.title}
+                        </p>
+                        <p>
+                            <b>BODY TEXT:</b> {data.body}
+                        </p>
+                    </li>
+                ))}
+            </ol>
         </div>
-        // <div>
-        //     <p className="useredit">
-        //         <b>USER ID:</b> {userId}
-        //         <br/>
-        //         <b>TITLE:</b> {title}
-        //         <br/>
-        //         <b>BODY TEXT:</b> {body}
-        //         <br/>
-        //     </p>
-        //
-        //     <h2>UPDATE THE DATA</h2>
-        //
-        //     <label>TITLE</label>
-        //     <input onChange={(e)=> setTitle(e.target.value)}/>
-        //     <br/>
-        //     <br/>
-        //     <label>BODY</label>
-        //     <input onChange={(e)=> setBody(e.target.value)} />
-        //     <br/>
-        //     <br/>
-        //     {/*<button onClick={Handlechange}>UPDATE</button>*/}
-        //
-        // </div>
-
     )
-
 }
 
+
+
+
+// export default function Useredit() {
+//
+//     const {id} = useParams();
+//     // console.log({id})
+//    const Newresponse= fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+
+//
+//
+//
+//     return (
+//
+//         <div>
+//             {/*<Handlechange/>*/}
+//             {/*<button onClick={Handlechange}>UPDATE</button>*/}
+//             {/*<p className="useredit">*/}
+//             {/*    <b>USER ID:</b> {id.userId}*/}
+//             {/*    <br/>*/}
+//             {/*    <b>TITLE:</b> {title}*/}
+//             {/*    <br/>*/}
+//             {/*    <b>BODY TEXT:</b> {body}*/}
+//             {/*    <br/>*/}
+//             {/*</p>*/}
+//
+//         </div>
+//     )
+// }

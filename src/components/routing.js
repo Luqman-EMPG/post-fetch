@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
-import App from "./Napp";
+import App from "./App";
 import Useredit from "./useredit";
-import Fetching from "./fetch";
-export default function Rote(){
+import Fetching from "./fetchbutton";
+export default function Routing(){
 
     return(
         <Router>

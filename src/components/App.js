@@ -1,4 +1,7 @@
-import React, { useState, useEffect,  } from "react";
+//FETCHES ALL DATA FROM API
+
+
+import { useState, useEffect,  } from "react";
 import "./style.css";
 import {Link} from "react-router-dom";
 
@@ -6,8 +9,6 @@ import {Link} from "react-router-dom";
 export default function App() {
     const [data, setData] = useState([]);
     const [value, setValue] = useState(0);
-   // const navigate = useNavigate();
-
 
     useEffect(() => {
         const getData = async () => {
@@ -24,8 +25,6 @@ export default function App() {
         getData();
     }, []);
 
-
-    //let state;
     return (
 
         <div className="App">
@@ -35,7 +34,7 @@ export default function App() {
             <ol>
 
                 {data.slice(0, value + 10).map((data) => (
-                    <li key={data.id}>
+                    <li key={data.id} className="data">
                         <p>
                             <b>USER ID:</b> {data.userId}
                         </p>
@@ -50,7 +49,7 @@ export default function App() {
                                 EDIT
                             </button>
                         </Link>
-                        {/*onClick={()=>navigate("/user"+id,{state:{id:userId,name:title,body:body}})}*/}
+
                     </li>
                 ))}
             </ol>
@@ -76,8 +75,6 @@ export default function App() {
             >
                 Next
             </button>
-
-
         </div>
     );
 }
